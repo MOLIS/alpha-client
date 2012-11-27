@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Alpha client</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var hash = location.hash;
+				if(hash && hash.indexOf("#access_token=") !== -1){
+					var token = hash.split("#access_token=")[1];
+					localStorage.setItem("token", token);
+					window.location = "/";
+				}else{
+					console.error("no token found");
+				}
+			});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

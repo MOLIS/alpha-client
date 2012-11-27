@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Alpha client</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var token = localStorage.getItem("token");
+				if(!token) {
+					$("#account").css("display", "block");
+				}else{
+					$.ajax({
+						type:"GET",
+						url:"http://molis.io/api/v1/hello?token=" + token,
+						success:function(data){
+							console.log(data);
+						},
+						error:function(data){
+							console.error(data);
+						}
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="account" style="display:none">
+			<a href="http://molis.io/oauth/authorize?client_id=1&redirect_uri=http://localhost/auth.html&response_type=token">Auth</a>
+		</div>
+	</body>
+</html>
